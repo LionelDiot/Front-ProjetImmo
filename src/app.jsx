@@ -14,9 +14,11 @@ import "./Styles/dark-mode.css";
 import LoggedInRoute from './Components/PrivateRoute/loggedinroute'
 import LoggedOutRoute from './Components/PrivateRoute/loggedoutroute'
 import PageNotFound from './Components/PageNotFound/index'
-import {Navigate} from "react-router-dom";
-import { useAtom} from "jotai";
+import { Navigate } from "react-router-dom";
+import { useAtom } from "jotai";
 import { darkModeAtom } from './Atoms/darkmode';
+import Notify from "./Components/KitUI/notify";
+import Cards from "./Components/KitUI/cards";
 
 
 export default function App() {
@@ -24,16 +26,18 @@ export default function App() {
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
-  
+
   return (
     <BrowserRouter>
       <div className={darkMode ? "dark" : ""}>
         <MyNavbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        
+
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/myprofile" element={<LoggedInRoute><MyProfile /></LoggedInRoute>} />
+            <Route path="/KitUI/notify" element={<Notify />} />
+            <Route path="/KitUI/cards" element={<Cards />} />
             <Route path="/articles/new" element={<LoggedInRoute><NewArticle /></LoggedInRoute>} />
             <Route path="/register" element={<LoggedOutRoute><Register /></LoggedOutRoute>} />
             <Route path="/login" element={<LoggedOutRoute><LogIn /></LoggedOutRoute>} />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Article from './article';
 import ShowButton from '../Buttons/showButton';
 import { Link } from "react-router-dom";
+import { Grid } from "@mui/material";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -28,18 +29,19 @@ const Articles = () => {
   return (
     <div>
       <h1>Articles</h1>
-      <ul>
+      <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
         {articles.map((article) => (
-          <li key={article.id}>
+          <Grid item xs={2} sm={4} md={4} key={article.id}>
             <Article article={article} />
             <Link to={`/article/${article.id}`}>
               <ShowButton />
             </Link>
-          </li>
+          </Grid>
         ))}
-      </ul>
+      </Grid>
     </div>
   );
 };
+
 
 export default Articles;

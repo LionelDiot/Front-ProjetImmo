@@ -39,6 +39,12 @@ export default function MyNavbar({ darkMode, toggleDarkMode }) {
         {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
       </button>
       <ul>
+        <li>
+          <Link to="/KitUI/notify">KitUI/Notify</Link>
+        </li>
+        <li>
+          <Link to="/KitUI/cards">KitUI/Cards</Link>
+        </li>
         {loggedIn ? (
           <>
             <li>
@@ -48,7 +54,7 @@ export default function MyNavbar({ darkMode, toggleDarkMode }) {
               <button onClick={handleLogout}>Se déconnecter</button>
             </li>
             <li>
-            <Link to="/articles/new">Ecrire un article</Link>
+              <Link to="/articles/new">Ecrire un article</Link>
             </li>
           </>
         ) : (
