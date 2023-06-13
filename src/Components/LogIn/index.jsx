@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useSetAtom } from "jotai";
 import { currentUserAtom } from "../../Atoms/currentuser";
 import { UserIdAtom } from "../../Atoms/userid";
+import { showToastSuccessLogin, showToastErrorLogin } from "../KitUI/notify";
 
 function Copyright(props) {
   return (
@@ -65,8 +66,9 @@ export default function SignIn() {
         console.log(responseData.user.id);
         setId(responseData.user.id);
         setUser(response.headers.get("Authorization"));
+        showToastSuccessLogin()
       } else {
-        // Handle invalid credentials
+        showToastErrorLogin()
       }
     } catch (error) {
       // Handle error
@@ -126,6 +128,7 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+            // onClick={showToastSuccessLogin}
             >
               Sign In
             </Button>
