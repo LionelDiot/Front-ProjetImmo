@@ -4,6 +4,7 @@ import { useSetAtom, useAtomValue } from "jotai";
 import { currentUserAtom } from "./Atoms/currentuser";
 import { UserIdAtom } from "./Atoms/userid";
 import { loggedInAtom } from "./Atoms/loggedin";
+// import Notify, { showToastSuccess } from "./Components/KitUI/notify";
 
 export default function MyNavbar({ darkMode, toggleDarkMode }) {
   const loggedIn = useAtomValue(loggedInAtom);
@@ -27,9 +28,13 @@ export default function MyNavbar({ darkMode, toggleDarkMode }) {
       .catch((error) => {
         console.error("Error:", error);
       });
+    // showToastSuccess()
+
+
     setUser(null);
     setUserId(null);
   };
+
   return (
     <nav>
       <div>

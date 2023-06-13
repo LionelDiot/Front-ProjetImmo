@@ -52,7 +52,7 @@ export default function Cards() {
             <CardMedia
                 component="img"
                 height="194"
-                image="/jouet_chien.jpeg"
+                image="/chien_jouet.jpeg"
                 alt="Paella dish"
             />
             <CardContent>
