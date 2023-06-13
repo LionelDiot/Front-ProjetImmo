@@ -6,11 +6,14 @@ import { UserIdAtom } from "./Atoms/userid";
 import { loggedInAtom } from "./Atoms/loggedin";
 // import Notify, { showToastSuccess } from "./Components/KitUI/notify";
 
-export default function MyNavbar({ darkMode, toggleDarkMode }) {
+export default function MyNavbar({ darkMode, toggleDarkMode })
+
+{
   const loggedIn = useAtomValue(loggedInAtom);
   const user = useAtomValue(currentUserAtom);
   const setUser = useSetAtom(currentUserAtom);
   const setUserId = useSetAtom(UserIdAtom);
+  
   const handleLogout = () => {
     fetch("http://localhost:3000/users/sign_out", {
       method: "delete",
@@ -38,7 +41,7 @@ export default function MyNavbar({ darkMode, toggleDarkMode }) {
   return (
     <nav>
       <div>
-        <Link to="/">FaitBouillirPlat</Link>
+        <Link to="/">Home</Link>
       </div>
       <button onClick={toggleDarkMode}>
         {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}

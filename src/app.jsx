@@ -17,7 +17,7 @@ import PageNotFound from './Components/PageNotFound/index'
 import { Navigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { darkModeAtom } from './Atoms/darkmode';
-import Notify from "./Components/KitUI/notify";
+import ResponsiveAppBar from "./Components/ResponsiveAppBar"; import Notify from "./Components/KitUI/notify";
 import Cards from "./Components/KitUI/cards";
 
 
@@ -30,8 +30,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className={darkMode ? "dark" : ""}>
-        <MyNavbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-
+        {/* <MyNavbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} /> */}
+        <ResponsiveAppBar />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
