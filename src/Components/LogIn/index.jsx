@@ -1,33 +1,64 @@
-import React, { useState } from "react";
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useSetAtom } from "jotai";
 import { currentUserAtom } from "../../Atoms/currentuser";
 import { UserIdAtom } from "../../Atoms/userid";
 
-export default function LogIn() {
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
+const defaultTheme = createTheme();
+
+export default function SignIn() {
   const setUser = useSetAtom(currentUserAtom);
   const setId = useSetAtom(UserIdAtom);
-  const [error, setError] = useState('');
-  
-  const authenticate = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const formUsername = event.target.elements.usernameArea.value;
-    const formPassword = event.target.elements.passwordArea.value;
+    const formUsername = event.currentTarget.email.value;
+    const formPassword = event.currentTarget.password.value;
     const data = {
       user: {
         email: formUsername,
         password: formPassword,
       },
     };
-  
+
     try {
-      const response = await fetch('http://localhost:3000/users/sign_in', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3000/users/sign_in", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-  
+
       if (response.ok) {
         const responseData = await response.json();
         console.log(response.headers.get("Authorization"));
@@ -35,38 +66,85 @@ export default function LogIn() {
         setId(responseData.user.id);
         setUser(response.headers.get("Authorization"));
       } else {
-        setError('Invalid credentials');
+        // Handle invalid credentials
       }
     } catch (error) {
-      setError('An error occurred');
+      // Handle error
     }
   };
-  
 
   return (
-    <>
-      <h1>Connecte toi ici</h1>
-      <form onSubmit={authenticate}>
-        <label>
-          Email:
-          <input
-            type="text"
-            name="usernameArea"
-            placeholder="Enter your  email"
-          />
-        </label>
-
-        <label>
-          Password:
-          <input
-            type="password"
-            name="passwordArea"
-            placeholder="Enter your password."
-          />
-        </label>
-
-        <button type="submit">Connexion</button>
-      </form>
-    </>
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
   );
 }
