@@ -7,19 +7,20 @@ import Articles from "./Components/Articles/index";
 import ShowArticle from "./Components/Articles/show";
 import NewArticle from "./Components/Articles/new";
 import LogIn from "./Components/LogIn/index";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import MyNavbar from "./mynavbar";
-import './Styles/style.scss';
+import "./Styles/style.scss";
 import "./Styles/dark-mode.css";
-import LoggedInRoute from './Components/PrivateRoute/loggedinroute'
-import LoggedOutRoute from './Components/PrivateRoute/loggedoutroute'
-import PageNotFound from './Components/PageNotFound/index'
+import LoggedInRoute from "./Components/PrivateRoute/loggedinroute";
+import LoggedOutRoute from "./Components/PrivateRoute/loggedoutroute";
+import PageNotFound from "./Components/PageNotFound/index";
 import { Navigate } from "react-router-dom";
 import { useAtom } from "jotai";
-import { darkModeAtom } from './Atoms/darkmode';
-import ResponsiveAppBar from "./Components/ResponsiveAppBar"; import Notify from "./Components/KitUI/notify";
+import { darkModeAtom } from "./Atoms/darkmode";
+import ResponsiveAppBar from "./Components/ResponsiveAppBar";
+import Notify from "./Components/KitUI/notify";
 import Cards from "./Components/KitUI/cards";
-
+import Footer from "./Components/Footer";
 
 export default function App() {
   const [darkMode, setDarkMode] = useAtom(darkModeAtom);
@@ -35,18 +36,49 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/myprofile" element={<LoggedInRoute><MyProfile /></LoggedInRoute>} />
+            <Route
+              path="/myprofile"
+              element={
+                <LoggedInRoute>
+                  <MyProfile />
+                </LoggedInRoute>
+              }
+            />
             <Route path="/KitUI/notify" element={<Notify />} />
             <Route path="/KitUI/cards" element={<Cards />} />
-            <Route path="/articles/new" element={<LoggedInRoute><NewArticle /></LoggedInRoute>} />
-            <Route path="/register" element={<LoggedOutRoute><Register /></LoggedOutRoute>} />
-            <Route path="/login" element={<LoggedOutRoute><LogIn /></LoggedOutRoute>} />
+            <Route
+              path="/articles/new"
+              element={
+                <LoggedInRoute>
+                  <NewArticle />
+                </LoggedInRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <LoggedOutRoute>
+                  <Register />
+                </LoggedOutRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <LoggedOutRoute>
+                  <LogIn />
+                </LoggedOutRoute>
+              }
+            />
             <Route path="/articles" element={<Articles />} />
             <Route path="/article/:articleSlug" element={<ShowArticle />} />
             <Route path="/404" element={<PageNotFound />} />
             <Route path="*" element={<Navigate to="/404" />} />
           </Routes>
         </main>
+        <div className="my-custom-footer"  >
+          <Footer/>
+        </div>
       </div>
     </BrowserRouter>
   );
