@@ -33,6 +33,7 @@ export default function App() {
       <div className={darkMode ? "dark" : ""}>
         {/* <MyNavbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} /> */}
         <ResponsiveAppBar />
+        < Notify />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
