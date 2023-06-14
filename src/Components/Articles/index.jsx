@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
-
+  const [articleCount, setArticleCount] = useState(0);
   useEffect(() => {
     const fetchArticles = async () => {
       try {
@@ -16,6 +16,7 @@ const Articles = () => {
         });
         const data = await response.json();
         setArticles(data);
+        
       } catch (error) {
         console.log(error);
       }
@@ -23,11 +24,13 @@ const Articles = () => {
 
     fetchArticles();
   }, []);
-
+  useEffect(() => {
+    setArticleCount(articles.length);
+  }, [articles])
 
   return (
     <div>
-      <h1>Articles</h1>
+      <h1>Articles : {articleCount}</h1>
       <ul>
         {articles.map((article) => (
           <li key={article.id}>

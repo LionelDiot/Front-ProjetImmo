@@ -8,7 +8,7 @@ const NewArticlePage = () => {
   const navigate = useNavigate();
   const user = useAtomValue(currentUserAtom);
   const handleCreateArticle = async (article) => {
-    const { title, content } = article;
+    const { title, content, isPrivate } = article;
   
     try {
       const response = await fetch("http://localhost:3000/articles", {
@@ -21,7 +21,7 @@ const NewArticlePage = () => {
           article: {
             title,
             content,
-            private: false,
+            isPrivate,
           },
         }),
       });
