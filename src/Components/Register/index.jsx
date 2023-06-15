@@ -62,7 +62,7 @@ export default function SignUp() {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/users", {
+      const response = await fetch("http://pawsdetente-ca7a0b6081c4.herokuapp.com/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

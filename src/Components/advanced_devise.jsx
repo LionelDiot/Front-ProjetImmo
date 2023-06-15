@@ -11,7 +11,7 @@ export default function Devise() {
   const setUserId = useSetAtom(UserIdAtom);
 
   const handleGetNew = () => {
-    fetch("http://localhost:3000/users/password/new", {
+    fetch("http://pawsdetente-ca7a0b6081c4.herokuapp.com/", {
       method: "get",
       headers: {
         // Authorization: `${user}`,
@@ -40,7 +40,7 @@ export default function Devise() {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/users/password", {
+      const response = await fetch("http://pawsdetente-ca7a0b6081c4.herokuapp.com/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +91,7 @@ export default function Devise() {
       },
     };
 
-    fetch("http://localhost:3000/users/password", {
+    fetch("http://pawsdetente-ca7a0b6081c4.herokuapp.com/users/password", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
