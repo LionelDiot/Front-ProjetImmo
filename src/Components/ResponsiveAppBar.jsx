@@ -38,7 +38,7 @@ function ResponsiveAppBar() {
   };
 
   const handleLogout = () => {
-    fetch("http://localhost:3000/users/sign_out", {
+    fetch("https://pawsdetente-ca7a0b6081c4.herokuapp.com/users/sign_out", {
       method: "delete",
       headers: {
         Authorization: `${user}`,

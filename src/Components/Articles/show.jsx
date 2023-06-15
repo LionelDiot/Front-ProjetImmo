@@ -19,7 +19,7 @@ const ShowArticle = () => {
   useEffect(() => {
     const fetchArticleData = async () => {
       try {
-        const response = await fetch(`http://pawsdetente-ca7a0b6081c4.herokuapp.com/articles/${articleSlug}`, {
+        const response = await fetch(`https://pawsdetente-ca7a0b6081c4.herokuapp.com/articles/${articleSlug}`, {
           method: "get",
           headers: loggedIn ? {
             Authorization: `${user}`,

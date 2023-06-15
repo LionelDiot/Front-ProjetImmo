@@ -11,7 +11,7 @@ export default function Devise() {
   const setUserId = useSetAtom(UserIdAtom);
 
   const handleGetNew = () => {
-    fetch("http://pawsdetente-ca7a0b6081c4.herokuapp.com/", {
+    fetch("https://pawsdetente-ca7a0b6081c4.herokuapp.com/", {
       method: "get",
       headers: {
         // Authorization: `${user}`,
@@ -40,7 +40,7 @@ export default function Devise() {
     };
 
     try {
-      const response = await fetch("http://pawsdetente-ca7a0b6081c4.herokuapp.com/", {
+      const response = await fetch("https://pawsdetente-ca7a0b6081c4.herokuapp.com/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export default function Devise() {
   };
 
   const handleGetReset = () => {
-    fetch("http://localhost:3000/users/password/edit?reset_password_token=ZeMgex16VFcdsa1xLmDZ", {
+    fetch("https://localhost:3000/users/password/edit?reset_password_token=ZeMgex16VFcdsa1xLmDZ", {
       method: "get",
       headers: {
         // Authorization: `${user}`,
@@ -91,7 +91,7 @@ export default function Devise() {
       },
     };
 
-    fetch("http://pawsdetente-ca7a0b6081c4.herokuapp.com/users/password", {
+    fetch("https://pawsdetente-ca7a0b6081c4.herokuapp.com/users/password", {
       method: "put",
       headers: {
         "Content-Type": "application/json",

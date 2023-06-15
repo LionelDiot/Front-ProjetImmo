@@ -18,7 +18,7 @@ const Articles = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch("http://pawsdetente-ca7a0b6081c4.herokuapp.com/articles", {
+        const response = await fetch("https://pawsdetente-ca7a0b6081c4.herokuapp.com/articles", {
           headers: {
             "Content-Type": "application/json",
           },

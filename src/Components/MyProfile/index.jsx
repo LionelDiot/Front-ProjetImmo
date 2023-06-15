@@ -10,7 +10,7 @@ export default function MyProfile() {
   
   useEffect(() => {
     if (loggedIn) {
-      fetch("http://pawsdetente-ca7a0b6081c4.herokuapp.com/member-data", {
+      fetch("https://pawsdetente-ca7a0b6081c4.herokuapp.com/member-data", {
         method: "get",
         headers: {
           Authorization: `${user}`,
