@@ -19,7 +19,7 @@ import { useAtom } from "jotai";
 import { darkModeAtom } from './Atoms/darkmode';
 import ResponsiveAppBar from "./Components/ResponsiveAppBar"; import Notify from "./Components/KitUI/notify";
 import Cards from "./Components/KitUI/cards";
-
+import Devise from "./Components/advanced_devise";
 
 export default function App() {
   const [darkMode, setDarkMode] = useAtom(darkModeAtom);
@@ -43,6 +43,7 @@ export default function App() {
             <Route path="/login" element={<LoggedOutRoute><LogIn /></LoggedOutRoute>} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/article/:articleSlug" element={<ShowArticle />} />
+            <Route path="/devise" element={<Devise/>} />
             <Route path="/404" element={<PageNotFound />} />
             <Route path="*" element={<Navigate to="/404" />} />
           </Routes>

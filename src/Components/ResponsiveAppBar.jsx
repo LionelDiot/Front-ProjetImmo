@@ -19,7 +19,7 @@ import { UserIdAtom } from "../Atoms/userid";
 import { loggedInAtom } from "../Atoms/loggedin";
 import { useMediaQuery } from "@mui/material";
 
-const pages = ["Articles", "MyProfile"];
+const pages = ["Articles", "MyProfile", "Devise"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

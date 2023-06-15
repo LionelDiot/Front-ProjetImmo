@@ -8,7 +8,6 @@ export default function MyProfile() {
   const user = useAtomValue(currentUserAtom);
   const loggedIn = useAtomValue(loggedInAtom);
   
-
   useEffect(() => {
     if (loggedIn) {
       fetch("http://localhost:3000/member-data", {
@@ -41,6 +40,7 @@ export default function MyProfile() {
     <>
       <h1>Coucou de Mon profil !</h1>
       <p>{monprofil}</p>
+      
     </>
   );
 }
